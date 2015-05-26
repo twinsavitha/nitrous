@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="jquery-2.1.3.js"></script>
+    <!-- Flight details and along wid custom events-->
+    <script> 
+     $(document).ready(function(){
+        
+        var showPrice = function(){
+          var vacation = $(this).closest('.vacation');
+          var price = vacation.data('price');
+          var details = $('<p> Book 3 days for $' + (3* price)+ '</p>');
+          vacation.append(details);
+        };
+        $('.vacation').on('click.price','button', showPrice);
+       // $('.vacation').on('show.price',showPrice);
+       // $('.vacation').trigger('show.price');
+    });
+    </script>
+</head>
+	<body>
+			<li class='vacation' data-price='399'>
+        <h3>Hawaiian Vacation</h3>
+        <button> Show Price</button>
+    </li><br>
+    <li class='vacation' data-price='400'>
+        <h3>European Vacation</h3>
+        <button> Show Price</button>
+    </li>
+    <a href='#' class = 'show-prices'> Show All Prices</a>
+
+	</body>
+</html>

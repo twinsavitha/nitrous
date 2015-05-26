@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <script src="jquery-2.1.3.js"></script>
+    <script src="one.js"></script>
+  </head>
+  <body>
+      <header>
+        <div id="heading">Ruby Quiz!!!</div>
+      </header>
+      <div id="main">   
+           <div id="tab">
+                  <table>
+                     <%= form_for :article, url: articles_create_path do |f| %>
+                     <tr>
+                         <td>Course ID:</td>
+                         <td><%= f.text_field :courseid %></td>
+                     </tr>
+                     <tr>
+                         <td>Employee ID:</td>
+                         <td> <%= f.text_field :empid %></td>
+                     </tr>
+                    <tr>
+                         <td></td>
+                         <td> <%= f.submit value = "Login" %></td>
+                     </tr>
+                     <%end %>
+                  </table>
+                     
+                    
+           </div>
+      </div>
+    <button id ="second">  TRY </button>
+    <div id="test"> TEST </div>
+     <footer>
+       <div id="foot">Copyright © tcs.com</div>
+       
+     </footer>
+  </body>
+</html>

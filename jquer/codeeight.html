@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="jquery-2.1.3.js"></script>
+    <!-- Plugin-->
+    <script> 
+      $.fn.priceify = function(){
+         console.log('Pricify called');
+         console.log(this);
+         var vacation = this; // here jus "this" points to al vacation elements. thus click in one reflects wid same value in other, hence use this.each(function()) lik in d prev line
+         vacation.on('click.priceify','button', function(){
+           var price = vacation.data('price');
+          var details = $('<p> Book 3 days for $' + (3* price)+ '</p>');
+           $(this).hide();
+           vacation.append(details);
+         });
+       };
+     $(document).ready(function(){
+       $('.vacation').priceify();
+     });
+    </script>
+</head>
+	<body>
+			<li class='vacation' data-price='399'>
+        <h3>Hawaiian Vacation</h3>
+        <button> Show Price</button>
+        <a href='#' class = 'not-interested'> Not Interested  </a>
+    </li><br>
+    <li class='vacation' data-price='400'>
+        <h3>European Vacation</h3>
+        <button> Show Price</button>
+        <a href='#' class = 'not-interested'> Not Interested  </a>
+    </li><br>
+
+	</body>
+</html>

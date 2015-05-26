@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <script src="jquery-2.1.4.js"></script>
+    <script src="one.js"></script>
+  </head>
+  <body>
+      <header>
+        <div id="heading">Ruby Quiz!!!</div>
+      </header>
+        <div id="main">
+            <div id="instruct">
+              <div id="name">Hello <%=  @namee %>! </div> 
+                  <ul id = "instructions">
+                      <p>Instructions:</p>
+                      <li>There are a set of five questions</li>
+                      <li>Each weighs five marks</li>
+                      <li>No negative markings</li>
+                      <li>No time limits</li>
+                  </ul>
+                   <div id="lastbutton">
+                    <%=link_to articles_new_path do%> 
+                      Start
+                    <%end%>
+                   </div>
+              </div>
+        </div>
+       <footer>
+         <div id="foot">Copyright © tcs.com</div>
+       </footer>
+  </body>
+</html>

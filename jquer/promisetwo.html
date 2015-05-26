@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="jquery-2.1.3.js"></script>
+    <script> 
+     $(document).ready(function(){
+       var Weather = {
+         today: function(location){
+           var promise = $.Deferred();
+           $.ajax(
+             'weather.json', {
+               contentType: 'application/json',
+               dataType: 'json',
+               data: {q: location},
+               success: function(result){
+                 promise.resolve(result.weather);
+               }
+             });
+           return promise;
+         }
+       }
+       var City = {
+         find: function(location){
+           var promise = $.Deferred();
+           alert("hey2");
+           alert(location);
+           $.ajax(
+             'cities.json', {
+               contentType: 'application/json',
+               dataType: 'json',
+               data: {q: location},
+               success: function(res){
+                 promise.resolve(res.uk);
+               }
+             });
+           return promise;
+         }
+       }
+       
+       
+        $('button').on('click',function(){
+          var location = $(this).parent().data('loc');
+          console.log("hey");
+          console.log(location);
+          var resultsDiv = $(this).parent().find('.results').empty();
+           
+          Weather.today(location).done(function(result){
+             resultsDiv.append(result);
+          });
+          City.find(location).done(function(res){
+             resultsDiv.append(res);
+          });
+        });
+    });
+    </script>
+</head>
+	<body>
+			<li data-loc = "uk">
+        London, UK
+        <button> More Info </button>
+        <div class= "results"> </div>
+    </li>
+    <li data-loc = "pr">
+        Paris,France
+        <button> More Info </button>
+        <div class= "results"> </div>
+    </li>
+  
+
+	</body>
+</html>

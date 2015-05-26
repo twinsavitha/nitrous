@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="jquery-2.1.3.js"></script>
+  <script> 
+      $.fn.priceify = function(){
+        this.each(function(){
+         var moviename = $(this); 
+         moviename.on('click.priceify','button', function(){
+           var price = moviename.data('price');
+           var name = moviename.data('name');
+           var details = $(this).parent().find('p').empty();
+         details = $('<p> Movie' + (name)+ '</p><p> Price' + (price)+ '</p>');
+           $(this).hide();
+           moviename.append(details);
+         });
+        });
+       };
+     $(document).ready(function(){
+       $('.movie').priceify();
+     });
+    </script>
+</head>
+	<body>
+			<li class='movie' data-price='250' data-name='HarryPotter'>
+        <h3>HarryPotter</h3>
+        <button> Show Price</button>
+    </li><br>
+    <li class ='movie' data-price='200' data-name='Twilight'>
+        <h3>Twilight</h3>
+        <button> Show Price</button>
+    </li><br>
+    <li class ='movie' data-price='175' data-name='Apocalypto'>
+        <h3>Apocalypto</h3>
+        <button> Show Price</button>
+    </li><br>
+    <li class ='movie' data-price='150' data-name='Narnia'>
+        <h3>Narnia</h3>
+        <button> Show Price</button>
+    </li><br>
+
+	</body>
+</html>

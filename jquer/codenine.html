@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="jquery-2.1.3.js"></script>
+    <!-- Plugin wid taking arguments n can have default values to be set fa it using extend!-->
+    <script> 
+      $.fn.priceify = function(options){
+         console.log('Pricify called');
+         console.log(this);
+        /* var vacation = this; // here jus "this" points to al vacation elements. thus click in one reflects wid same value in other, hence use this.each(function()) lik in d prev line
+         vacation.on('click.priceify','button', function(){
+           var price = vacation.data('price');
+          var details = $('<p> Book ' + options.days +  ' days for $' + (options.days* price)+ '</p>');
+           $(this).hide();
+           vacation.append(details);
+         });
+         */
+       /* var settings = $.extend({
+          days: 3,
+          vacation: this,
+          price: $(this).data('price')
+        },options);
+        settings.vacation.on('click.priceify', 'button', function(){
+          var details = $('<p> Book ' + settings.days +  ' days for $' + (settings.days* settings.price)+ '</p>');
+          $(this).hide();
+          settings.vacation.append(details);
+        });
+       };
+       */
+         var settings = $.extend({
+          days: 3,
+          vacation: this,
+          price: $(this).data('price')
+        },options);
+        var show = function(){
+          var details = $('<p> Book ' + settings.days +  ' days for $' + (settings.days* settings.price)+ '</p>');
+          $('.show-prices').hide();
+          settings.vacation.append(details);
+        };  
+        settings.vacation.on('click.priceify', 'button', show);
+        settings.vacation.on('show.priceify',show);
+        var remove = function(){
+          settings.vacation.hide().off('.priceify');
+        };
+        settings.vacation.on('click.priceify','.not-interested',remove);
+       };
+       
+     $(document).ready(function(){
+       $('.vacation').priceify({days: 4});
+       $('.show-prices').on('click', function(event){
+          $('.vacation').trigger('show.priceify');
+       })
+     });
+    </script>
+</head>
+	<body>
+    hey!
+			<li class='vacation' data-price='399'>
+        <h3>Hawaiian Vacation</h3>
+        <button> Show Price</button>
+        <a href='#' class = 'show-prices'> Show all prices  </a>
+        <a href='#' class = 'not-interested'> Not Interested  </a>
+    </li><br>
+    <li class='vacation' data-price='400'>
+        <h3>Hawaiian Vacation</h3>
+        <button> Show Price</button>  
+        <a href='#' class = 'show-prices'> Show all prices  </a>
+        <a href='#' class = 'not-interested'> Not Interested  </a>
+    </li><br>
+
+	</body>
+</html>
