@@ -1,0 +1,30 @@
+<p>
+  <% if @article.author != nil  %>
+  <%= @article.author.name %>
+    <% else %>
+      <%= "Unknown Author" %>
+<% end %>
+</p>
+
+
+<p>
+  <strong>Title:</strong>
+  <%= @article.title %>
+</p>
+ 
+<p>
+  <strong>Text:</strong>
+  <%= @article.text %>
+</p>
+<hr>
+<p>
+    <% @article.comms.each do |comment| %>
+  
+      <strong>Name of commenter: </strong>
+      <%= comment.name %>
+  <hr>
+    <% end %>
+</p>
+
+<%= link_to 'Comment', commentnew_path(@article) %>
+<%= link_to 'Back', index_path %>

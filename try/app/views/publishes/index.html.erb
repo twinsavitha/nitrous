@@ -1,0 +1,19 @@
+<h1>Listing publishes</h1>
+ 
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+  </tr>
+ 
+  <% @publishes.each do |publish| %>
+    <tr>
+      <td><%= publish.title %></td>
+      <td><%= publish.text %></td>
+      <td><%= link_to "Edit", edit_path(publish) %></td>
+      <td><%= link_to "Show", show_path(publish) %></td>
+      <td><%= link_to "Delete", delete_path(publish), method: :delete, data: { confirm: 'Are you sure?' } %></td>      
+    </tr>
+  <% end %>
+</table>
+<%= link_to "New", new_path %>
