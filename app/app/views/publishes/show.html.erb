@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @publish.title %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @publish.text %>
+</p>
+
+<%= link_to 'Edit', edit_publish_path(@publish) %> |
+<%= link_to 'Back', publishes_path %>
